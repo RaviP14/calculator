@@ -1,5 +1,5 @@
 function add(num1, num2) {
-    return num1 + num2;
+    return parseInt(num1) + parseInt(num2);
 }
 
 function subtract(num1, num2) {
@@ -26,8 +26,24 @@ function operate(operator, num1, num2) {
     }
 }
 
-function data() {
-   
+function calc() {
+    total = operate(symbol, value1, value2);
+    const displays = document.querySelector('.display');
+    displays.textContent = total
+    console.log(total)
+    symbol = undefined
+    value1 = total
+    value2 = ''
+    
+}
+
+function calc2() {
+    total = operate(symbol, value1, value2);
+    const displays = document.querySelector('.display');
+    displays.textContent = total;
+    console.log(total)
+    value1 = total
+    value2 = ''
 }
 //transfer symbol, value1 & value2 into operate function
 let equals = document.querySelector('.equals');
@@ -35,12 +51,7 @@ let equals = document.querySelector('.equals');
 let total;
 
 equals.addEventListener('click', () => {
-    total = operate(symbol, value1, value2);
-    const displays = document.querySelector('.display');
-    displays.textContent = total;
-    symbol = undefined
-    value1 = total
-    value2 = ''
+    calc()
 })
 // get value1 & value2
 let inputNum = document.querySelectorAll('.numberBtn');
@@ -51,7 +62,7 @@ let value2 = '';
 inputNum.forEach((button) => {
     button.addEventListener('click', (e) => {
         valueA = e.target.value
-        if (symbol === undefined) {
+        if ((value1 !== total) && symbol === undefined) {
             value1 += valueA
             const displays = document.querySelector('.display');
             displays.textContent = value1;
@@ -75,10 +86,19 @@ inputOp.forEach((button) => {
     if (symbol === undefined) {
         button.addEventListener('click', (e) => {
             symbol = e.target.value
-            const displays = document.querySelector('.display');
-            displays.textContent = symbol
-            console.log(symbol)
-            return symbol
+                if (value2 === '') {
+                const displays = document.querySelector('.display');
+                displays.textContent = symbol
+                console.log(symbol)
+                return symbol
+            } else if (symbol){ //not sure if this is needed
+                calc2() //something wrong with calc2 
+            }else if (value2 !== '') {
+                const displays = document.querySelector('.display');
+                displays.textContent = symbol
+                console.log(symbol)
+                calc2()
+            }
         })
     }
 })
