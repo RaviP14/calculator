@@ -15,43 +15,81 @@ function divide(num1, num2) {
 }
 
 function operate(operator, num1, num2) {
-    if (operator === 'add') {
+    if (operator === '+') {
         return add(num1, num2);
-    }else if (operator === 'subtract') {
+    }else if (operator === '-') {
         return subtract(num1, num2);
-    } else if (operator === 'multiply') {
+    } else if (operator === 'x') {
        return multiply(num1, num2);
-    } else if (operator === 'divide') {
+    } else if (operator === '/') {
        return divide(num1, num2);
     }
 }
 
-function data(valueA, symbol) {
-   const displays = document.querySelector('.display');
-   //let values = displays.textContent = valueA;
-   let operation = displays.textContent = valueA + " " + symbol;
-   console.log(operation)
-   if (valueA === true) { //problem with if statment also values and operation get shown straight away
-        return values
-   } else if ((valueA === true) && (symbol === true )) {
-       return operation
-   }
+function data() {
    
 }
-const inputNum = document.querySelectorAll('.numberBtn');
+//transfer symbol, value1 & value2 into operate function
+let equals = document.querySelector('.equals');
+
+let total;
+
+equals.addEventListener('click', () => {
+    total = operate(symbol, value1, value2);
+    const displays = document.querySelector('.display');
+    displays.textContent = total;
+    symbol = undefined
+    value1 = total
+    value2 = ''
+})
+// get value1 & value2
+let inputNum = document.querySelectorAll('.numberBtn');
+
+let value1 = '';
+let value2 = '';
 
 inputNum.forEach((button) => {
     button.addEventListener('click', (e) => {
-        const valueA = e.target.value
-        data(valueA, '')
+        valueA = e.target.value
+        if (symbol === undefined) {
+            value1 += valueA
+            const displays = document.querySelector('.display');
+            displays.textContent = value1;
+            console.log(value1)
+        } else if (symbol === 'x' || symbol === '+' || symbol === '-' || symbol === '/') {
+            value2 += valueA
+            const displays = document.querySelector('.display');
+            displays.textContent = '';
+            displays.textContent = value2
+            console.log(value2)
+        }
     })
 })
 
- const inputOp = document.querySelectorAll('.operatorBtn');
+//get operator
+const inputOp = document.querySelectorAll('.operatorBtn');
 
- inputOp.forEach((button) => {
-     button.addEventListener('click', (e) => {
-        const symbol = e.target.value
-        data('', symbol)
-     })
- })
+let symbol;
+
+inputOp.forEach((button) => {
+    if (symbol === undefined) {
+        button.addEventListener('click', (e) => {
+            symbol = e.target.value
+            const displays = document.querySelector('.display');
+            displays.textContent = symbol
+            console.log(symbol)
+            return symbol
+        })
+    }
+})
+
+//clear display
+let cleared = document.querySelector('.clear');
+
+cleared.addEventListener('click', () => {
+    symbol = undefined
+    value1 = ''
+    value2 = ''
+    const displays = document.querySelector('.display');
+    displays.textContent = '';
+})
