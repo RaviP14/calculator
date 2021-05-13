@@ -137,9 +137,9 @@ inputOp.forEach((button) => {
                 displays.textContent = symbol
                 console.log(symbol)
                 return symbol
-            } else if (symbol){ //not sure if this is needed
+            } else if (symbol){ 
                 calc2()
-            }else if (value2 !== '') {
+            }else if (value2 !== '') { //not sure if this is needed
                 const displays = document.querySelector('.display');
                 displays.textContent = symbol
                 console.log(symbol)
