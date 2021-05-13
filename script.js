@@ -18,6 +18,11 @@ function divide(num1, num2) {
     return rounded = Math.round(totals * 1000)/1000
 }
 
+function exponential(num1, num2) {
+    totals = Math.pow(num1, num2)
+    return rounded = Math.round(totals * 1000)/1000
+}
+
 function operate(operator, num1, num2) {
     if (operator === '+') {
         return add(num1, num2);
@@ -27,6 +32,8 @@ function operate(operator, num1, num2) {
        return multiply(num1, num2);
     } else if (operator === '/') {
        return divide(num1, num2);
+    } else if (operator === 'x^y') {
+        return exponential(num1, num2)
     }
 }
 //when equals is pressed
@@ -59,7 +66,7 @@ function calc2() {
     decimalVal = undefined
     decimalVal2 = undefined
 }
-//transfer symbol, value1 & value2 into operate function
+//transfer symbol, value1 & value2 into operate function (equals button)
 let equals = document.querySelector('.equals');
 
 let total;
@@ -84,7 +91,7 @@ inputNum.forEach((button) => {
             const displays = document.querySelector('.display');
             displays.textContent = value1;
             console.log(value1)
-        } else if (symbol === 'x' || symbol === '+' || symbol === '-' || symbol === '/') {
+        } else if (symbol === 'x' || symbol === '+' || symbol === '-' || symbol === '/' || symbol === 'x^y') {
             value2 += valueA
             const displays = document.querySelector('.display');
             displays.textContent = '';
@@ -96,7 +103,6 @@ inputNum.forEach((button) => {
 })
 
 //decimal point - not working with + (ignores decimals) 
-
 let decimal = document.querySelector('.decimal');
 
 let decimalVal;
@@ -132,7 +138,7 @@ inputOp.forEach((button) => {
                 console.log(symbol)
                 return symbol
             } else if (symbol){ //not sure if this is needed
-                calc2() //something wrong with calc2 
+                calc2()
             }else if (value2 !== '') {
                 const displays = document.querySelector('.display');
                 displays.textContent = symbol
@@ -154,4 +160,40 @@ cleared.addEventListener('click', () => {
     decimalVal2 = undefined
     const displays = document.querySelector('.display');
     displays.textContent = '';
+})
+
+//backspace
+let backspace = document.querySelector('.backSpace');
+
+backspace.addEventListener('click', () => {
+    const displays = document.querySelector('.display');
+    if (displays.textContent === value1) {
+        value1 = value1.slice(0, -1);
+        console.log(value1)
+        displays.textContent = value1
+    } else if (displays.textContent === value2) {
+        value2 = value2.slice(0, -1);
+        console.log(value2)
+        displays.textContent = value2
+    }
+})
+//percent
+let percent = document.querySelector('.percent');
+
+percent.addEventListener('click', () => {
+    const displays = document.querySelector('.display');
+    if (displays.textContent === value1) {
+        value1 = value1 / 100;
+        console.log(value1)
+        displays.textContent = value1
+    } else if (displays.textContent === value2) {
+        value2 = value2 / 100;
+        console.log(value2)
+        displays.textContent = value2
+    } else if (displays.textContent && !symbol) {
+        total = total/100;
+        console.log(total)
+        displays.textContent = total
+        total = value1
+    }
 })
