@@ -1,5 +1,7 @@
 .display {
     background-color: #90ee90;
-    width: 12em;
-    height: 2em;
+    width: 18em;
+    height: 3em;
+    font-size: 20px;
+    text-align: right;
 }
