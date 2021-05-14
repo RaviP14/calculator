@@ -27,7 +27,7 @@ button {
     border-radius: 100%;
     margin-left: auto;
     margin-right: auto;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
     border: none;
     cursor: pointer;
@@ -39,12 +39,15 @@ button:hover {
 }
 
 .display {
+    display: flex;
+    justify-content: right;
+    align-items: center;
     background-color: #74c69d;
     width: 400px;
     height: 80px;
     font-size: 30px;
-    text-align: right;
     grid-area: header;
+    box-shadow: inset 1px 2px 5px 5px rgba(0,0,0,0.4);
 }
 .operatorBtn {
     background-color: #2d6a4f;
@@ -53,7 +56,6 @@ button:hover {
 .numberBtn {
     background-color: #52b788;
     color: #f8f8ff;
-    font-size: 16px;
     font-weight: 700;
 }
 .numberBtn:hover {
@@ -63,35 +65,31 @@ button:hover {
     grid-area: clear;
     background-color: #2d6a4f;
     color: #f8f8ff;
-    font-size: 16px;
     font-weight: 700;
 }
 .backSpace {
     grid-area: bcksp;
     background-color: #2d6a4f;
     color: #f8f8ff;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
 }
 .percent {
     grid-area: percent;
     background-color: #2d6a4f;
     color: #f8f8ff;
-    font-size: 16px;
     font-weight: 700;
 }
 .equals {
     grid-area: equals;
     background-color: #2d6a4f;
     color: #f8f8ff;
-    font-size: 16px;
     font-weight: 700;
 }
 .decimal {
     grid-area: decimal;
     background-color: #2d6a4f;
     color: #f8f8ff;
-    font-size: 16px;
     font-weight: 700;
 }
 #exp {grid-area: exponen;}
