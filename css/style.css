@@ -1,7 +1,111 @@
-.display {
-    background-color: #90ee90;
-    width: 18em;
-    height: 3em;
-    font-size: 20px;
-    text-align: right;
+body {
+    background-color: #f8f8ff;
+    padding-top: 3em;
 }
+
+.container {
+    display:  grid;
+    width: 400px;
+    height: 580px;
+    grid-template-areas: 
+    'header header header header'
+    'clear bcksp percent exponen'
+    'seven eight nine divide'
+    'four five six times'
+    'one two three minus'
+    'decimal zero equals plus';
+    grid-gap: 15px;
+    background-color: #232b2b;
+    padding: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    border: 2px solid #1b4332;
+}
+button {
+    width: 80px;
+    border-radius: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}    
+button:hover {
+    background-color: #1b4332;
+}
+
+.display {
+    background-color: #74c69d;
+    width: 400px;
+    height: 80px;
+    font-size: 30px;
+    text-align: right;
+    grid-area: header;
+}
+.operatorBtn {
+    background-color: #2d6a4f;
+    color: #f8f8ff;
+}
+.numberBtn {
+    background-color: #52b788;
+    color: #f8f8ff;
+    font-size: 16px;
+    font-weight: 700;
+}
+.numberBtn:hover {
+    background-color: #2d6a4f;
+}
+.clear {
+    grid-area: clear;
+    background-color: #2d6a4f;
+    color: #f8f8ff;
+    font-size: 16px;
+    font-weight: 700;
+}
+.backSpace {
+    grid-area: bcksp;
+    background-color: #2d6a4f;
+    color: #f8f8ff;
+    font-size: 16px;
+    font-weight: 700;
+}
+.percent {
+    grid-area: percent;
+    background-color: #2d6a4f;
+    color: #f8f8ff;
+    font-size: 16px;
+    font-weight: 700;
+}
+.equals {
+    grid-area: equals;
+    background-color: #2d6a4f;
+    color: #f8f8ff;
+    font-size: 16px;
+    font-weight: 700;
+}
+.decimal {
+    grid-area: decimal;
+    background-color: #2d6a4f;
+    color: #f8f8ff;
+    font-size: 16px;
+    font-weight: 700;
+}
+#exp {grid-area: exponen;}
+#nine {grid-area: nine;}
+#eight {grid-area: eight;}
+#seven {grid-area: seven;}
+#six {grid-area: six;}
+#five {grid-area: five;}
+#four {grid-area: four;}
+#three {grid-area: three;}
+#two {grid-area: two;}
+#one {grid-area: one;}
+#zero {grid-area: zero;}
+#divide {grid-area: divide;}
+#times {grid-area: times;}
+#minus {grid-area: minus;}
+#plus {grid-area: plus;}
