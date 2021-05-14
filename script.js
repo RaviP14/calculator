@@ -45,7 +45,7 @@ function calc() {
     } else if (total === Infinity) {
         displays.textContent = 'Really?'
     }
-    console.log(total)
+    //console.log(total)
     symbol = undefined
     value1 = total
     value2 = ''
@@ -60,7 +60,7 @@ function calc2() {
     } else if (total === Infinity) {
         displays.textContent = 'Really?'
     }
-    console.log(total)
+    //console.log(total)
     value1 = total
     value2 = ''
     decimalVal = undefined
@@ -85,18 +85,18 @@ let value2 = '';
 
 inputNum.forEach((button) => {
     button.addEventListener('click', (e) => {
-        valueA = e.target.value
+        valueA = e.currentTarget.value
         if ((value1 !== total) && symbol === undefined) {
             value1 += valueA
             const displays = document.querySelector('.display');
             displays.textContent = value1;
-            console.log(value1)
+            //console.log(value1)
         } else if (symbol === 'x' || symbol === '+' || symbol === '-' || symbol === '/' || symbol === 'x^y') {
             value2 += valueA
             const displays = document.querySelector('.display');
             displays.textContent = '';
             displays.textContent = value2
-            console.log(value2)
+            //console.log(value2)
             total = operate(symbol, value1, value2);
         }
     })
@@ -111,14 +111,14 @@ let decimalVal2;
 decimal.addEventListener('click', (e) => {
     const displays = document.querySelector('.display');
     if ((displays.textContent === value1) && decimalVal === undefined) {
-        decimalVal = e.target.value
+        decimalVal = e.currentTarget.value
         value1 += decimalVal
-        console.log(value1)
+        //console.log(value1)
         displays.textContent = value1
     } else if ((displays.textContent === value2) && decimalVal2 == undefined) {
-        decimalVal2 = e.target.value
+        decimalVal2 = e.currentTarget.value
         value2 += decimalVal2
-        console.log(value2)
+        //console.log(value2)
         displays.textContent = value2
     }
 })
@@ -131,18 +131,18 @@ let symbol;
 inputOp.forEach((button) => {
     if (symbol === undefined) {
         button.addEventListener('click', (e) => {
-            symbol = e.target.value
+            symbol = e.currentTarget.value
                 if (value2 === '') {
                 const displays = document.querySelector('.display');
                 displays.textContent = symbol
-                console.log(symbol)
+                //console.log(symbol)
                 return symbol
             } else if (symbol){ 
                 calc2()
             }else if (value2 !== '') { //not sure if this is needed
                 const displays = document.querySelector('.display');
                 displays.textContent = symbol
-                console.log(symbol)
+                //console.log(symbol)
                 calc2()
             }
         })
@@ -169,11 +169,11 @@ backspace.addEventListener('click', () => {
     const displays = document.querySelector('.display');
     if (displays.textContent === value1) {
         value1 = value1.slice(0, -1);
-        console.log(value1)
+        //console.log(value1)
         displays.textContent = value1
     } else if (displays.textContent === value2) {
         value2 = value2.slice(0, -1);
-        console.log(value2)
+        //console.log(value2)
         displays.textContent = value2
     }
 })
@@ -184,15 +184,15 @@ percent.addEventListener('click', () => {
     const displays = document.querySelector('.display');
     if (displays.textContent === value1) {
         value1 = value1 / 100;
-        console.log(value1)
+        //console.log(value1)
         displays.textContent = value1
     } else if (displays.textContent === value2) {
         value2 = value2 / 100;
-        console.log(value2)
+        //console.log(value2)
         displays.textContent = value2
     } else if (displays.textContent && !symbol) {
         total = total/100;
-        console.log(total)
+        //console.log(total)
         displays.textContent = total
         total = value1
     }
