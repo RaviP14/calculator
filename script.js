@@ -199,7 +199,7 @@ percent.addEventListener('click', () => {
 })
 
 
-//KEYBOARD SUPPORT(NOT WORKING YET)
+//KEYBOARD SUPPORT
 //keyboard numbers
 document.addEventListener('keydown', (e) => {
     
