@@ -197,3 +197,118 @@ percent.addEventListener('click', () => {
         total = value1
     }
 })
+
+
+//KEYBOARD SUPPORT(NOT WORKING YET)
+//keyboard numbers
+document.addEventListener('keydown', (e) => {
+    
+    if ((value1 !== total && symbol === undefined) &&
+     (e.key === '1' || e.key === '2' || e.key === '3' || e.key === '4' || e.key === '5' || e.key === '6' || e.key === '7' || e.key === '8' || e.key === '9' || e.key === '0')) {
+        value1 += e.key
+        console.log(value1)
+        const displays = document.querySelector('.display');
+        displays.textContent = value1
+    } else if ((symbol === 'x' || symbol === '+' || symbol === '-' || symbol === '/' || symbol === 'x^y')
+     && (e.key === '1' || e.key === '2' || e.key === '3' || e.key === '4' || e.key === '5' || e.key === '6' || e.key === '7' || e.key === '8' || e.key === '9' || e.key === '0')) {
+        value2 += e.key
+        console.log(value2)
+        const displays = document.querySelector('.display');
+        displays.textContent = value2
+        total = operate(symbol, value1, value2);
+    }
+    
+})
+
+//keyboard symbols
+document.addEventListener('keydown', (e) => {
+    const displays = document.querySelector('.display');
+    if (value2 === '' && (e.key === '-' || e.key === '+' || e.key === '/')) {
+        symbol = e.key
+        displays.textContent = symbol
+    } else if (value2 === '' && e.key === '^') {
+        symbol = 'x^y'
+        displays.textContent = symbol
+    } else if (value2 === '' && e.key === '*') {
+        symbol = 'x'
+        displays.textContent = symbol
+    } else if (symbol && value2 !== '' && (e.key === '-' || e.key === '+' || e.key === '/')){
+        calc2();
+        symbol = e.key;
+    } else if (symbol && value2 !== '' && (e.key === '^')) {
+        calc2();
+        symbol = 'x^y';
+    } else if (symbol && value2 !== '' && (e.key === '*')) {
+        calc2();
+        symbol = 'x'
+        
+    }
+})
+
+//clear display with delete key
+document.addEventListener('keydown', (e) =>{
+    if (e.key === 'Delete') {
+        symbol = undefined
+        value1 = ''
+        value2 = ''
+        decimalVal = undefined
+        decimalVal2 = undefined
+        const displays = document.querySelector('.display');
+        displays.textContent = '';
+    }
+})
+
+
+//decimal key
+document.addEventListener('keydown', (e) => {
+    const displays = document.querySelector('.display');
+    if (e.key === '.' && (displays.textContent === value1) && decimalVal === undefined) {
+        decimalVal = e.key
+        value1 += decimalVal
+        displays.textContent = value1
+    } else if (e.key === '.' && (displays.textContent === value2) && decimalVal2 == undefined) {
+        decimalVal2 = e.key
+        value2 += decimalVal2
+        displays.textContent = value2
+    }
+})
+
+//percent key
+
+document.addEventListener('keydown', (e) => {
+    const displays = document.querySelector('.display');
+    if (e.key === '%' && (displays.textContent === value1)) {
+        value1 = value1 / 100;
+        displays.textContent = value1
+    } else if (e.key === '%' && (displays.textContent === value2)) {
+        value2 = value2 / 100;
+        displays.textContent = value2
+    } else if (e.key === '%' && (displays.textContent && !symbol)) {
+        total = total/100;
+        displays.textContent = total
+        total = value1
+    }
+})
+
+//equals key
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === '=' && (value1 !== '' && value2 !== '' && symbol !== undefined)) {
+        calc()
+    }
+})
+
+//backspace key
+
+document.addEventListener('keydown', (e) => {
+    const displays = document.querySelector('.display');
+    if (displays.textContent === value1 && e.key === 'Backspace') {
+        value1 = value1.slice(0, -1);
+        //console.log(value1)
+        displays.textContent = value1
+    } else if (displays.textContent === value2 && e.key === 'Backspace') {
+        value2 = value2.slice(0, -1);
+        //console.log(value2)
+        displays.textContent = value2
+    }
+})
