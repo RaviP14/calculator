@@ -48,7 +48,13 @@ button:hover {
     font-size: 30px;
     grid-area: header;
     box-shadow: inset 1px 2px 5px 5px rgba(0,0,0,0.4);
-    overflow: hidden;
+    overflow: scroll;
+    padding-right: 1rem;
+    max-width: 380px;
+    scrollbar-width: none;
+}
+.display::-webkit-scrollbar {
+    display: none;
 }
 .operatorBtn {
     background-color: #2d6a4f;
