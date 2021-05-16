@@ -48,6 +48,7 @@ button:hover {
     font-size: 30px;
     grid-area: header;
     box-shadow: inset 1px 2px 5px 5px rgba(0,0,0,0.4);
+    overflow: hidden;
 }
 .operatorBtn {
     background-color: #2d6a4f;
